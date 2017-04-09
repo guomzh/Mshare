@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:textSize="24sp"
+             android:textColor="#FFF"
+             android:layout_gravity="center_horizontal"
+             android:layout_marginTop="20dp"
+             android:text="请输入你要下载的资源的url地址:"/>
+    <EditText
+        android:id="@+id/et_url"
+       android:layout_margin="20dp"
+        android:background="@color/cardview_light_background"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:ellipsize="start"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancel_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消下载"
+            android:background="@android:color/holo_green_light"
+            android:layout_margin="10dp"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/start_download"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@android:color/holo_green_light"
+            android:text="开始下载"/>
+
+        <Button
+            android:id="@+id/pause_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/holo_green_light"
+            android:layout_margin="10dp"
+            android:text="暂停下载"
+            />
+
+    </LinearLayout>
+    <!--<TextView-->
+        <!--android:text="下载内置资源："-->
+        <!--android:textColor="#FFF"-->
+        <!--android:textSize="20sp"-->
+        <!--android:layout_margin="30dp"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" />-->
+    <LinearLayout
+        android:layout_width="250dp"
+        android:orientation="vertical"
+        android:layout_margin="30dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/cardview_light_background"
+        android:layout_height="50dp">
+        <Spinner
+            android:id="@+id/spi_one"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"></Spinner>
+    </LinearLayout>
+    <com.example.csuer.mshare.MyTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="#FFF"
+        android:textSize="15sp"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:text="Tips:下载后的文件在Download目录下  Tips:下载后的文件在Download目录下  Tips:下载后的文件在Download目录下   Tips:下载后的文件在Download目录下   Tips:下载后的文字在Download目录下
+      Tips:下载后的文件在Download目录下   Tips:下载后的文件在Download目录下"/>
+
+</LinearLayout>

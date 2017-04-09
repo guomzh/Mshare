@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fl"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+    <ImageView
+        android:id="@+id/mouse"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/dishu"/>
+        <TextView
+            android:id="@+id/game_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Flappy Mouse"
+            android:layout_marginLeft="106dp"
+            android:layout_marginTop="30dp"
+            android:textSize="25sp"
+            android:gravity="center_horizontal"
+            android:textColor="#FFF"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFF"
+            android:textSize="20sp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="90dp"
+            android:text="游戏规则：打地鼠"/>
+
+    <TextView
+        android:id="@+id/game_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <TextView
+        android:id="@+id/text_game_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="#FFF"
+        android:text="游戏最高记录"
+        android:layout_gravity="center"/>
+   <Button
+       android:id="@+id/start_game"
+       android:layout_gravity="bottom"
+       android:layout_marginLeft="140dp"
+       android:layout_marginBottom="20dp"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="开始游戏"
+       android:background="@android:color/holo_green_light"/>
+</FrameLayout>
