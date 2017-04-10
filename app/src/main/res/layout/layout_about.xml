@@ -22,6 +22,7 @@
             android:textSize="25sp"
             android:textColor="#FFF"
             android:layout_margin="20dp"
+            android:layout_gravity="center"
             android:text="更多功能，更多想法"/>
         <TextView
             android:layout_width="wrap_content"
@@ -29,7 +30,8 @@
             android:textSize="25sp"
             android:textColor="#FFF"
             android:layout_margin="20dp"
-            android:text="请使用联系作者定制"
+            android:layout_gravity="center"
+            android:text="请联系作者交流"
             />
     </LinearLayout>
 

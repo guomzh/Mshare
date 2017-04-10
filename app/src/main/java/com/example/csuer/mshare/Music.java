@@ -46,13 +46,23 @@ public class Music extends AppCompatActivity {
     private TextView music_name;
     private TextView singer_name;
     private Spinner spinner;
+    private TextView tv_current_progress;
+    private TextView tv_total_progress;
     private int playsort=0;
+    private int min=0;
+    private int sec=0;
+    private int time=0;
+    private String str_min="";
+    private String str_sec="";
+
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_music);
         //初始化spinner
         initSpi_one();
+        tv_current_progress=(TextView)findViewById(R.id.text_current_progress);
+        tv_total_progress=(TextView)findViewById(R.id.text_total_progress);
          music_name=(TextView)findViewById(R.id.music_name);
          singer_name=(TextView)findViewById(R.id.singer_name);
         seekBar_music=(SeekBar)findViewById(R.id.seekbar_music);
@@ -61,6 +71,24 @@ public class Music extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if(fromUser==true&&mediaPlayer.isPlaying()){
                     mediaPlayer.seekTo(progress);
+                    time=progress/1000;
+                    min=time/60;
+                    sec=time%60;
+                    str_min="0"+String.valueOf(min);
+                    if(sec<10)
+                        str_sec="0"+String.valueOf(sec);
+                    else str_sec=String.valueOf(sec);
+                    tv_current_progress.setText(str_min+":"+str_sec);
+                }
+              else   if(fromUser==true&&!mediaPlayer.isPlaying()) {
+                   time = progress / 1000;
+                    min = time / 60;
+                    sec = time % 60;
+                    str_min = "0" + String.valueOf(min);
+                    if (sec < 10)
+                        str_sec = "0" + String.valueOf(sec);
+                    else str_sec = String.valueOf(sec);
+                    tv_current_progress.setText(str_min + ":" + str_sec);
                 }
             }
 
@@ -151,8 +179,16 @@ public class Music extends AppCompatActivity {
         public void run() {
             //获得歌曲现在播放位置并设置成播放进度条的值
             seekBar_music.setProgress(mediaPlayer.getCurrentPosition());
-            //每次延迟100毫秒再启动线程
-            handler.postDelayed(updateThread, 100);
+            time=mediaPlayer.getCurrentPosition()/1000;
+            min=time/60;
+            sec=time%60;
+            str_min="0"+String.valueOf(min);
+            if(sec<10)
+                str_sec="0"+String.valueOf(sec);
+            else str_sec=String.valueOf(sec);
+            tv_current_progress.setText(str_min+":"+str_sec);
+            //每次延迟1000毫秒再启动线程
+            handler.postDelayed(updateThread, 200);
         }
     };
     public void playMusic(String path)
@@ -168,6 +204,15 @@ public class Music extends AppCompatActivity {
             mediaPlayer.start();
             pause.setImageResource(R.drawable.pause);
             seekBar_music.setMax(mediaPlayer.getDuration());
+            time=mediaPlayer.getDuration()/1000;
+            min=time/60;
+            sec=time%60;
+            str_min="0"+String.valueOf(min);
+            if(sec<10)
+                str_sec="0"+String.valueOf(sec);
+            else str_sec=String.valueOf(sec);
+            tv_total_progress.setText(str_min+":"+str_sec);
+            tv_current_progress.setText("00:00");
             handler.post(updateThread);
         } catch (Exception e) {
             e.printStackTrace();

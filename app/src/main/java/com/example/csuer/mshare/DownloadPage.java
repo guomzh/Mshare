@@ -89,7 +89,7 @@ public class DownloadPage extends AppCompatActivity implements View.OnClickListe
     {
         List<Map<String, Object>> arrayList=new ArrayList<Map<String,Object>>();
         String []arry1={"",
-                "https://codeload.github.com/codeestX/GeekNews/zip/master",
+                "https://codeload.github.com/zhangguom/Mshare/zip/master",
                 "https://raw.githubusercontent.com/guolindev/eclipse/master/eclipse-inst-win64.exe",
                 "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1491750456800&di=1090df7328036aa3bdfa3ac3aff12e78&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farchive%2F38b0a649abd9adba7dc4e157640f88a1032143d6.jpg",
                 "尚未找到生活大爆炸第七季第一集的资源"};
@@ -153,7 +153,13 @@ public class DownloadPage extends AppCompatActivity implements View.OnClickListe
                 downloadBinder.pauseDownload();
                 break;
             case R.id.cancel_download:
+                downloadBinder.pauseDownload();
                 downloadBinder.cancelDownload();
+                Intent intent=new Intent(DownloadPage.this,DownloadService.class);
+                stopService(intent);
+                Toast.makeText(DownloadPage.this,"取消下载",Toast.LENGTH_SHORT).show();
+                finish();
+
                 break;
             default:
                 break;

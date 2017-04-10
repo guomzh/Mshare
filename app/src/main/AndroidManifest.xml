@@ -39,7 +39,8 @@
             android:launchMode="singleTop" />
         <activity android:name=".Search" />
         <activity android:name=".Location" />
-        <activity android:name=".DownloadPage"/>
+        <activity android:name=".DownloadPage"
+            android:launchMode="singleTop"/>
         <activity android:name=".UserCenter"/>
         <activity android:name=".About"/>
         <service

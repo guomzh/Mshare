@@ -27,14 +27,19 @@ public class DownloadService extends Service {
         public void onSuccess() {
             downloadTask=null;
             stopForeground(true);
-            getNotificationManager().notify(1,getNotification("下载完成啦",-1));
-            Toast.makeText(DownloadService.this,"下载成功了哟",Toast.LENGTH_SHORT).show();
+            getNotificationManager().notify(1,getNotification("下载完成",-1));
+            Toast.makeText(DownloadService.this,"下载成功",Toast.LENGTH_SHORT).show();
         }
-
+        @Override
+        public void onCanceled() {
+            downloadTask=null;
+            stopForeground(true);
+            Toast.makeText(DownloadService.this,"您取消下载了",Toast.LENGTH_SHORT).show();
+        }
         @Override
         public void onPause() {
             downloadTask=null;
-            Toast.makeText(DownloadService.this,"下载已经暂停了哟",Toast.LENGTH_SHORT).show();
+            Toast.makeText(DownloadService.this,"暂停下载",Toast.LENGTH_SHORT).show();
 
         }
 
@@ -43,15 +48,10 @@ public class DownloadService extends Service {
              downloadTask =null;
             stopForeground(true);
             getNotificationManager().notify(1,getNotification("下载失败,请重新下载或检查url地址",-1));
-            Toast.makeText(DownloadService.this,"下载失败,请重新下载或检查url地址",Toast.LENGTH_SHORT).show();
+            Toast.makeText(DownloadService.this,"下载失败,请重新下载或检查url地址",Toast.LENGTH_LONG).show();
         }
 
-        @Override
-        public void onCanceled() {
-            downloadTask=null;
-            stopForeground(true);
-            Toast.makeText(DownloadService.this,"您下载取消了哟",Toast.LENGTH_SHORT).show();
-        }
+
     };
     private DownloadBinder mBinder=new DownloadBinder();
     @Override
@@ -67,7 +67,7 @@ public class DownloadService extends Service {
                 downloadTask=new DownloadTask(listener);
                 downloadTask.execute(downloadUrl);
                 startForeground(1,getNotification("下载中...",0));
-               Toast.makeText(DownloadService.this,"开始下载了哟",Toast.LENGTH_SHORT).show();
+               Toast.makeText(DownloadService.this,"开始下载",Toast.LENGTH_LONG).show();
             }
         }
         public void pauseDownload(){

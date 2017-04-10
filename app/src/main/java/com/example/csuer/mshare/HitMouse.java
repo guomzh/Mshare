@@ -61,7 +61,7 @@ public class HitMouse extends AppCompatActivity {
        preferences= PreferenceManager.getDefaultSharedPreferences(this);
        game_record=preferences.getInt("game_record",0);
        textView_record=(TextView)findViewById(R.id.text_game_record);
-       textView_record.setText("最高记录:\n\n"+"10s打掉"+String.valueOf(game_record)+"只地鼠");
+       textView_record.setText("     最高记录:\n\n"+"10s打掉"+String.valueOf(game_record)+"只地鼠");
 
     }
     Handler handler = new Handler();
@@ -96,10 +96,13 @@ class  endgame extends TimerTask{
     {
 
         handler.removeCallbacks(thread);
-         showUi();
-        editor=preferences.edit();
-        editor.putInt("game_record",i);
-        editor.apply();
+        if(i>game_record){
+            editor=preferences.edit();
+            editor.putInt("game_record",i);
+            editor.apply();
+        }
+
+        showUi();
         Intent intent=new Intent(HitMouse.this,HitMouse.class);
         PendingIntent pi=PendingIntent.getActivity(HitMouse.this,0,intent,0);
         NotificationManager manager=(NotificationManager)getSystemService(NOTIFICATION_SERVICE);
@@ -116,8 +119,9 @@ class  endgame extends TimerTask{
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                textView_record.setText("最高记录:\n" +
-                        "\n"+"10s打掉"+i+"只地鼠");
+                game_record=preferences.getInt("game_record",0);
+                textView_record.setText("     最高记录:\n" +
+                        "\n"+"10s打掉"+game_record+"只地鼠");
             }
         });
     }

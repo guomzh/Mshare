@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         view_head=navigationView.getHeaderView(0);
         //初始化sharepreferrence
         preferences= PreferenceManager.getDefaultSharedPreferences(this);
-        String temp=preferences.getString("username","折翅的天使");
+        String temp=preferences.getString("username","简单");
         //用户名
         user_name=(TextView)view_head.findViewById(R.id.user_name);
         user_name.setText(temp);
